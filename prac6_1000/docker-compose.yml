@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  prac6_1000:
+    image: ${DOCKER_REGISTRY-}prac61000
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: prac6_1000/Dockerfile
+
+
+  db:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
