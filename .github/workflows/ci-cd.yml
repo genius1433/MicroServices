@@ -1,7 +1,5 @@
 name: CI/CD pipeline
 on:
- push:
-    branches: ["master"]
  workflow_dispatch:
     branches: ["master"]
  pull_request:
