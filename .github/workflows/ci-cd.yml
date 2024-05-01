@@ -1,36 +1,65 @@
-name: CI/CD pipline
+name: CI/CD pipeline
 on:
-  push:
-  workflow_dispatch:
+ push:
     branches: ["master"]
-  pull_request:
-    branches: ["master"] 
+ workflow_dispatch:
+    branches: ["master"]
+ pull_request:
+    branches: ["master"]
 
 jobs:
-    build-and-push-to-yc:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
-            - name: Build docker image
-              run: docker build ./prac6_1000/prac6_1000 --tag cr.yandex/${{secrets.YC_REGISTRY_ID}}/prac6_1000:latest
-            - name: Login to YC Registry
-              uses: docker/login-action@v3.0.0
-              with:
-                registry: cr.yandex
-                username: json_key
-                password: ${{ secrets.YC_KEYS }}
-            - name: Push tag to YC Registry
-              run: docker push cr.yandex/${{ secrets.YC_REGISTRY_ID }}/prac6_1000:latest 
-    deploy:
-        name: Deploy
-        runs-on: ubuntu-latest
-        needs: [build-and-push-to-yc]
-        steps:
-          - name: Deploy serverless container
-            uses: yc-actions/yc-sls-container-deploy@v1
-            with:
-              yc-sa-json-credentials: ${{ secrets.YC_KEYS }}
-              container-name: ${{ secrets.YC_CONTAINER_NAME }}
-              folder-id: ${{ secrets.YC_FOLDER_ID }}
-              revision-image-url: cr.yandex/${{ secrets.YC_REGISTRY_ID }}/prac6_1000:latest
-              revision-service-account-id: ${{ secrets.YC_SA_ID }}
+ build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x' # Specify the .NET version you are using
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+      - name: Run unit tests
+        run: dotnet test --filter ./prac6_1000/prac6_1000/UnitTestPage3.cs --no-build --verbosity normal
+      - name: Run unit tests
+        run: dotnet test --filter ./prac6_1000/prac6_1000/UnitTestPage4.cs --no-build --verbosity normal
+      - name: Run unit tests
+        run: dotnet test --filter ./prac6_1000/prac6_1000/UnitTestPage5.cs --no-build --verbosity normal
+      - name: Run component tests
+        run: dotnet test --filter ./prac6_1000/prac6_1000/ComponentTestPage3.cs --no-build --verbosity normal
+      - name: Run component tests
+        run: dotnet test --filter ./prac6_1000/prac6_1000/ComponentTestPage4.cs --no-build --verbosity normal
+      - name: Run component tests
+        run: dotnet test --filter ./prac6_1000/prac6_1000/ComponentTestPage5.cs --no-build --verbosity normal
+        # Repeat the above step for Page4ModelComponentTests and Page5ModelComponentTests, adjusting the filter accordingly
+
+ build-and-push-to-yc:
+    needs: [build-and-test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build docker image
+        run: docker build ./prac6_1000/prac6_1000 --tag cr.yandex/${{secrets.YC_REGISTRY_ID}}/prac6_1000:latest
+      - name: Login to YC Registry
+        uses: docker/login-action@v3.0.0
+        with:
+          registry: cr.yandex
+          username: json_key
+          password: ${{ secrets.YC_KEYS }}
+      - name: Push tag to YC Registry
+        run: docker push cr.yandex/${{ secrets.YC_REGISTRY_ID }}/prac6_1000:latest
+
+ deploy:
+    name: Deploy
+    needs: [build-and-push-to-yc]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy serverless container
+        uses: yc-actions/yc-sls-container-deploy@v1
+        with:
+          yc-sa-json-credentials: ${{ secrets.YC_KEYS }}
+          container-name: ${{ secrets.YC_CONTAINER_NAME }}
+          folder-id: ${{ secrets.YC_FOLDER_ID }}
+          revision-image-url: cr.yandex/${{ secrets.YC_REGISTRY_ID }}/prac6_1000:latest
+          revision-service-account-id: ${{ secrets.YC_SA_ID }}
