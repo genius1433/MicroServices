@@ -21,17 +21,17 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release --no-restore
       - name: Run unit tests
-        run: dotnet test --filter FullyQualifiedName~prac6_1000.Tests.UnitTestPage3.OnPost_UpdatesTicketStatus_Successfully --no-build --verbosity normal
+        run: dotnet test --filter FullyQualifiedName~prac6_1000.UnitTestPage3.OnPost_UpdatesTicketStatus_Successfully --no-build --verbosity normal
       - name: Run unit tests
-        run: dotnet test --filter FullyQualifiedName~prac6_1000.Tests.UnitTestPage4.OnPost_UpdatesTicketStatusToCancelled_Successfully --no-build --verbosity normal
+        run: dotnet test --filter FullyQualifiedName~prac6_1000.UnitTestPage4.OnPost_UpdatesTicketStatusToCancelled_Successfully --no-build --verbosity normal
       - name: Run unit tests
-        run: dotnet test --filter FullyQualifiedName~prac6_1000.Tests.UnitTestPage5.OnPost_UpdatesClientIdForTicket_Successfullyy --no-build --verbosity normal
+        run: dotnet test --filter FullyQualifiedName~prac6_1000.UnitTestPage5.OnPost_UpdatesClientIdForTicket_Successfullyy --no-build --verbosity normal
       - name: Run component tests
-        run: dotnet test --filter FullyQualifiedName~prac6_1000.Tests.Page3ModelComponentTests.UpdateStatusToDone_DisplaysSuccessMessage --no-build --verbosity normal
+        run: dotnet test --filter FullyQualifiedName~prac6_1000.Page3ModelComponentTests.UpdateStatusToDone_DisplaysSuccessMessage --no-build --verbosity normal
       - name: Run component tests
-        run: dotnet test --filter FullyQualifiedName~prac6_1000.Tests.Page4ModelComponentTests.UpdateStatusToCancelled_DisplaysSuccessMessage --no-build --verbosity normal
+        run: dotnet test --filter FullyQualifiedName~prac6_1000.Page4ModelComponentTests.UpdateStatusToCancelled_DisplaysSuccessMessage --no-build --verbosity normal
       - name: Run component tests
-        run: dotnet test --filter FullyQualifiedName~prac6_1000.Tests.Page5ModelComponentTests.AssignClientToTicket_DisplaysSuccessMessage --no-build --verbosity normal
+        run: dotnet test --filter FullyQualifiedName~prac6_1000.Page5ModelComponentTests.AssignClientToTicket_DisplaysSuccessMessage --no-build --verbosity normal
         # Repeat the above step for Page4ModelComponentTests and Page5ModelComponentTests, adjusting the filter accordingly
 
  build-and-push-to-yc:
