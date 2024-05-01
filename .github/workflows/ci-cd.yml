@@ -18,7 +18,7 @@ jobs:
           dotnet-version: '8.0.x' # Specify the .NET version you are using
       - name: Restore dependencies
         run: dotnet restore
-        working-directory: prac6_1000/prac6_1000/prac6_1000
+        working-directory: ./prac6_1000/prac6_1000
       - name: Build
         run: dotnet build --configuration Release --no-restore
       - name: Run unit tests
