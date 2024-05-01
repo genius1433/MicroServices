@@ -21,3 +21,9 @@ C:\Users\marin\source\repos\prac6_1000\bin\Debug\prac6_1000.pdb
 C:\Users\marin\source\repos\prac6_1000\obj\Debug\docker-compose.dcproj.AssemblyReference.cache
 C:\Users\marin\source\repos\prac6_1000\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
 C:\Users\marin\source\repos\prac6_1000\obj\Debug\docker-compose.dcproj.CopyComplete
+C:\Users\marin\source\repos\prac6_1000\bin\Debug\xunit.core.dll
+C:\Users\marin\source\repos\prac6_1000\bin\Debug\Moq.dll
+C:\Users\marin\source\repos\prac6_1000\bin\Debug\xunit.assert.dll
+C:\Users\marin\source\repos\prac6_1000\bin\Debug\xunit.abstractions.dll
+C:\Users\marin\source\repos\prac6_1000\bin\Debug\Castle.Core.dll
+C:\Users\marin\source\repos\prac6_1000\bin\Debug\Microsoft.Playwright.dll

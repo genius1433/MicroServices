@@ -47,13 +47,49 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[3.3.1, )"
+            },
+            "Microsoft.Playwright.MSTest": {
+              "target": "Package",
+              "version": "[1.43.0, )"
+            },
+            "Microsoft.Playwright.NUnit": {
+              "target": "Package",
+              "version": "[1.43.0, )"
+            },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.19.4, )"
             },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.70, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "NUnit.ConsoleRunner": {
+              "target": "Package",
+              "version": "[3.17.0, )"
+            },
+            "NUnit.Engine": {
+              "target": "Package",
+              "version": "[3.17.0, )"
+            },
             "Npgsql": {
               "target": "Package",
               "version": "[8.0.2, )"
+            },
+            "xunit.assert": {
+              "target": "Package",
+              "version": "[2.8.0, )"
+            },
+            "xunit.extensibility.core": {
+              "target": "Package",
+              "version": "[2.8.0, )"
             }
           },
           "imports": [
