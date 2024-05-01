@@ -24,16 +24,22 @@ jobs:
         working-directory: ./prac6_1000/prac6_1000
       - name: Run unit tests
         run: dotnet test --filter FullyQualifiedName~prac6_1000.UnitTestPage3.OnPost_UpdatesTicketStatus_Successfully --no-build --verbosity normal
+        working-directory: ./prac6_1000/prac6_1000
       - name: Run unit tests
         run: dotnet test --filter FullyQualifiedName~prac6_1000.UnitTestPage4.OnPost_UpdatesTicketStatusToCancelled_Successfully --no-build --verbosity normal
+        working-directory: ./prac6_1000/prac6_1000
       - name: Run unit tests
         run: dotnet test --filter FullyQualifiedName~prac6_1000.UnitTestPage5.OnPost_UpdatesClientIdForTicket_Successfullyy --no-build --verbosity normal
+        working-directory: ./prac6_1000/prac6_1000
       - name: Run component tests
         run: dotnet test --filter FullyQualifiedName~prac6_1000.Page3ModelComponentTests.UpdateStatusToDone_DisplaysSuccessMessage --no-build --verbosity normal
+        working-directory: ./prac6_1000/prac6_1000
       - name: Run component tests
         run: dotnet test --filter FullyQualifiedName~prac6_1000.Page4ModelComponentTests.UpdateStatusToCancelled_DisplaysSuccessMessage --no-build --verbosity normal
+        working-directory: ./prac6_1000/prac6_1000
       - name: Run component tests
         run: dotnet test --filter FullyQualifiedName~prac6_1000.Page5ModelComponentTests.AssignClientToTicket_DisplaysSuccessMessage --no-build --verbosity normal
+        working-directory: ./prac6_1000/prac6_1000
         # Repeat the above step for Page4ModelComponentTests and Page5ModelComponentTests, adjusting the filter accordingly
 
  build-and-push-to-yc:
