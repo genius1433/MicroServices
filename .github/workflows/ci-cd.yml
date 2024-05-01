@@ -21,6 +21,7 @@ jobs:
         working-directory: ./prac6_1000/prac6_1000
       - name: Build
         run: dotnet build --configuration Release --no-restore
+        working-directory: ./prac6_1000/prac6_1000
       - name: Run unit tests
         run: dotnet test --filter FullyQualifiedName~prac6_1000.UnitTestPage3.OnPost_UpdatesTicketStatus_Successfully --no-build --verbosity normal
       - name: Run unit tests
