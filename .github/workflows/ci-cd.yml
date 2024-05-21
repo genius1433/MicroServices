@@ -95,4 +95,8 @@ jobs:
 
       - name: Push tag to docker hub
         run: |
+<<<<<<< HEAD
           docker push ${{ secrets.DOCKER_USERNAME }}/ms-funny-services:latest
+=======
+          docker push ${{ secrets.DOCKER_USERNAME }}/ms-bored-services:latest
+>>>>>>> 3008a11ee875be24915cad33eba28fc07d87a20d
