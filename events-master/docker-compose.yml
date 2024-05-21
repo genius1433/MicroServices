@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+
+  events_service:
+    restart: on-failure
+    container_name: events_service
+    build: events_service/
+    ports:
+      - "8000:80"
+
+  funny_service:
+    restart: on-failure
+    container_name: funny_service
+    build: funny_service/
+    ports:
+      - "8001:80"
