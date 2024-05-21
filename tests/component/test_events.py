@@ -3,7 +3,7 @@ from datetime import date
 
 base_url = 'http://localhost:8000'
 add_event_url = f'{base_url}/add_event'
-get_events_url = f'{base_url}/events'
+get_events_url = f'{base_url}/eventss'
 get_event_by_id_url = f'{base_url}/get_event_by_id'
 delete_event_url = f'{base_url}/delete_event'
 
