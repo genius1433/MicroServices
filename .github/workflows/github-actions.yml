@@ -76,8 +76,8 @@ jobs:
           revision-env: |
             POSTGRES_URL=${{ secrets.ENV_POSTGRES_URL }}
 
-  build_and_push_bored_service:
-    name: Build and push bored service to DockerHub
+  build_and_push_funny_service:
+    name: Build and push funny service to DockerHub
     runs-on: ubuntu-latest
     needs: [ test ]
     steps:
@@ -85,7 +85,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          cd bored_service && docker build -f Dockerfile . -t ${{ secrets.DOCKER_USERNAME }}/ms-bored-services:latest
+          cd funny_service && docker build -f Dockerfile . -t ${{ secrets.DOCKER_USERNAME }}/ms-funny-services:latest
 
       - name: Login to DockerHub
         uses: docker/login-action@v3.0.0
@@ -95,4 +95,4 @@ jobs:
 
       - name: Push tag to docker hub
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/ms-bored-services:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/ms-funny-services:latest
