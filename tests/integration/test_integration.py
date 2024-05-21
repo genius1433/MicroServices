@@ -6,11 +6,11 @@ import sys
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 sys.path.append(str(BASE_DIR))
-sys.path.append(str(BASE_DIR / 'events_service/app'))
-sys.path.append(str(BASE_DIR / 'funny_service/app'))
+sys.path.append(str(BASE_DIR / 'tasks_service/app'))
+sys.path.append(str(BASE_DIR / 'bored_service/app'))
 
-from events_service.app.main import service_alive as events_status
-from funny_service.app.main import service_alive as funny_status
+from tasks_service.app.main import service_alive as tasks_status
+from bored_service.app.main import service_alive as bored_status
 
 
 @pytest.mark.asyncio
@@ -24,12 +24,12 @@ async def test_database_connection():
 
 
 @pytest.mark.asyncio
-async def test_events_service_connection():
-    r = await events_status()
+async def test_tasks_service_connection():
+    r = await tasks_status()
     assert r == {'message': 'Service alive'}
 
 
 @pytest.mark.asyncio
 async def test_bored_service_connection():
-    r = await funny_status()
+    r = await bored_status()
     assert r == {'message': 'Service alive'}

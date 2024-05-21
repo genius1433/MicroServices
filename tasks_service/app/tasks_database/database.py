@@ -7,15 +7,13 @@ engine = create_engine(URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
-
-class EventDB(Base):
-    __tablename__ = 'events_Marinov'
+class TaskDB(Base):
+    __tablename__ = 'tasks_epishev'
 
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, nullable=False)
     description = Column(Text, nullable=False)
     priority = Column(Integer, nullable=False)
-    event_date = Column(Date, nullable=False)
-
+    due_date = Column(Date, nullable=False)
 
 Base.metadata.create_all(bind=engine)

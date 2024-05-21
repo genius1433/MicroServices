@@ -12,7 +12,7 @@ new_task = {
     "title": "Complete Assignment",
     "description": "Finish the mathematics assignment",
     "priority": 1,
-    "event_date": str(date(2024, 6, 1))
+    "due_date": str(date(2024, 6, 1))
 }
 
 def test_health_check():
