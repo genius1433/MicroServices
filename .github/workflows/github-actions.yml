@@ -75,7 +75,3 @@ jobs:
           revision-service-account-id: ${{ secrets.YC_SA_ID }}
           revision-env: |
             POSTGRES_URL=${{ secrets.ENV_POSTGRES_URL }}
-
-      - name: Push tag to docker hub
-        run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/ms-bored-services:latest
